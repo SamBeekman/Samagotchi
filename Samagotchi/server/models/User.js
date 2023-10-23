@@ -21,9 +21,15 @@ const userSchema = new Schema(
       required: true,
     },
     avatar: {
-      type: Image //--------------------------------------------------------------------how to select avatar?
+      type: String,
+      required: false, //--------------------------------------------------------------------how to select avatar?
     },
-    friends: [friendsSchema], //---------------------------- i think do this by self referencing or virtual, look into
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      }, //-------------------------------------------------------------------may need to make a virtual for getting friend data?
+    ],
     myPets: [petSchema],
   }
 );

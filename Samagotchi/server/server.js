@@ -25,9 +25,9 @@ const startApolloServer = async () => {
   }));
 
   if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, '../client/dist'))); //maybe '../client/build'
+    app.use(express.static(path.join(__dirname, '../client/dist')));
 
-    // if '../client/build' then commentout or change following code
+
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });

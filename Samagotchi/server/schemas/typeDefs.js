@@ -1,49 +1,55 @@
-// const typeDefs = `
+const typeDefs = `
 
-// input BookInput {
-//     bookId: String!
-//     authors: [String!]!
-//     description: String!
-//     title: String!
-//     image: String!
-//     link: String
-//   }
+input PetInput {
+    _id: ID!
+    species: Int!
+    sprite: Int!
+    happiness: Int!
+    hungry: Boolean!
+    sleepy: Boolean!
+    poopy: Boolean!
+    fitness: Int!
+  }
 
-// type User {
-//     _id: ID!
-//     username: String!
-//     email: String!
-//     password: String!
-//     bookCount: Int!
-//     savedBooks: [Book]
-// }
+type User {
+    _id: ID!
+    username: String!
+    email: String!
+    avatar: String
+    myFriends: [User]
+    myPets: [Pet]
+}
 
-// type Book {
-//     bookId: String!
-//     authors: [String!]!
-//     description: String!
-//     title: String!
-//     image: String!
-//     link: String
-// }
+type Pet {
+    _id: ID!
+    species: Int!
+    sprite: Int!
+    happiness: Int!
+    hungry: Boolean!
+    sleepy: Boolean!
+    poopy: Boolean!
+    fitness: Int!
+}
 
-// type Auth {
-//     token: ID!
-//     user: User
-// }
+type Auth {
+    token: ID!
+    user: User
+}
 
-// type Query {
-//     me: User
-// }
+type Query {
+    me: User
+    searchUsers(id: String!): User
+}
 
-// type Mutation {
-//     login(email: String!, password: String!): Auth
-//     addUser(username: String!, email: String!, password: String!): Auth
-//     saveBook(bookInput: BookInput!): User
-//     removeBook(bookId: String!): User
-// }
-// `;
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    addFriend(id: String!): Auth
+    removeFriend(id:String!): Auth
+    addPet(petInput: PetInput!): Auth
+    removePet(id: String!): Auth
+    
+}
+`;
 
-// module.exports = typeDefs;
-
-// // may not need password in User
+module.exports = typeDefs;
