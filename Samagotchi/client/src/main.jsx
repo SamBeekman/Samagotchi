@@ -5,10 +5,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import Chat from './pages/Chat'
 import Friends from './pages/Friends'
-import Gameplay from './pages/Gameplay'
 import Homepage from './pages/Homepage'
 import LoginSignup from './pages/LoginSignup'
 import Payment from './pages/Payment'
+import Play from './pages/Play'
 import Profile from './pages/Profile'
 
 
@@ -31,11 +31,7 @@ const router = createBrowserRouter([
         element: <Friends />
       },
       {
-        path: '/gameplay',
-        element: <Gameplay />
-      },
-      {
-        path: '/login',
+        path: '/login-signup',
         element: <LoginSignup />
       },
       {
@@ -43,7 +39,11 @@ const router = createBrowserRouter([
         element: <Payment />
       },
       {
-        path: '/profile/:id',
+        path: '/play',
+        element: <Play />
+      },
+      {
+        path: '/profile/:username',
         element: <Profile />
       },
     ]

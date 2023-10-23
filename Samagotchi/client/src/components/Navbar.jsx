@@ -1,77 +1,69 @@
-// import { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { Navbar, Nav, Container, Modal, Tab } from 'react-bootstrap';
-// import SignUpForm from './SignupForm';
-// import LoginForm from './LoginForm';
+import { Link, useLocation } from 'react-router-dom';
 
-// import Auth from '../utils/auth';
 
-// const AppNavbar = () => {
-//   // set modal display state
-//   const [showModal, setShowModal] = useState(false);
+function NavTabs() {
+    const currentPage = useLocation().pathname;
 
-//   return (
-//     <>
-//       <Navbar bg='dark' variant='dark' expand='lg'>
-//         <Container fluid>
-//           <Navbar.Brand as={Link} to='/'>
-//             Google Books Search
-//           </Navbar.Brand>
-//           <Navbar.Toggle aria-controls='navbar' />
-//           <Navbar.Collapse id='navbar' className='d-flex flex-row-reverse'>
-//             <Nav className='ml-auto d-flex'>
-//               <Nav.Link as={Link} to='/'>
-//                 Search For Books
-//               </Nav.Link>
-//               {/* if user is logged in show saved books and logout */}
-//               {Auth.loggedIn() ? (
-//                 <>
-//                   <Nav.Link as={Link} to='/saved'>
-//                     See Your Books
-//                   </Nav.Link>
-//                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
-//                 </>
-//               ) : (
-//                 <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
-//               )}
-//             </Nav>
-//           </Navbar.Collapse>
-//         </Container>
-//       </Navbar>
-//       {/* set modal data up */}
-//       <Modal
-//         size='lg'
-//         show={showModal}
-//         onHide={() => setShowModal(false)}
-//         aria-labelledby='signup-modal'>
-//         {/* tab container to do either signup or login component */}
-//         <Tab.Container defaultActiveKey='login'>
-//           <Modal.Header closeButton>
-//             <Modal.Title id='signup-modal'>
-//               <Nav variant='pills'>
-//                 <Nav.Item>
-//                   <Nav.Link eventKey='login'>Login</Nav.Link>
-//                 </Nav.Item>
-//                 <Nav.Item>
-//                   <Nav.Link eventKey='signup'>Sign Up</Nav.Link>
-//                 </Nav.Item>
-//               </Nav>
-//             </Modal.Title>
-//           </Modal.Header>
-//           <Modal.Body>
-//             <Tab.Content>
-//               <Tab.Pane eventKey='login'>
-//                 <LoginForm handleModalClose={() => setShowModal(false)} />
-//               </Tab.Pane>
-//               <Tab.Pane eventKey='signup'>
-//                 <SignUpForm handleModalClose={() => setShowModal(false)} />
-//               </Tab.Pane>
-//             </Tab.Content>
-//           </Modal.Body>
-//         </Tab.Container>
-//       </Modal>
-//     </>
-//   );
-// };
+    return (
+        <ul className="nav nav-tabs">
+            <li className="nav-item">
+                <Link
+                    to="/"
+                    className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
+                >
+                    Homepage
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/chat"
+                    className={currentPage === '/chat' ? 'nav-link active' : 'nav-link'}
+                >
+                    Chat
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/friends"
+                    className={currentPage === '/friends' ? 'nav-link active' : 'nav-link'}
+                >
+                    Friends
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/login-signup"
+                    className={currentPage === '/login-signup' ? 'nav-link active' : 'nav-link'}
+                >
+                    Login-Signup
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/payment"
+                    className={currentPage === '/payment' ? 'nav-link active' : 'nav-link'}
+                >
+                    Payment
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/play"
+                    className={currentPage === '/play' ? 'nav-link active' : 'nav-link'}
+                >
+                    Play
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link
+                    to="/profile/:username"
+                    className={currentPage === '/profile/username' ? 'nav-link active' : 'nav-link'}
+                >
+                    Profile
+                </Link>
+            </li>
+        </ul>
+    );
+}
 
-// export default AppNavbar;
+export default NavTabs;
