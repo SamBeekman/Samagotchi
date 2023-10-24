@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import { Form, Button, Alert } from 'react-bootstrap';
 
 const SignupForm = () => {
     // set initial form state
@@ -12,7 +13,7 @@ const SignupForm = () => {
     const [showAlert, setShowAlert] = useState(false);
 
 
-    const [addUser, { error, data }] = useMutation(ADD_USER); //----------------------------------mutation must match
+    const [addUser, { error, data }] = useMutation(ADD_USER);
 
 
 
@@ -72,7 +73,6 @@ const SignupForm = () => {
                         value={userFormData.username}
                         required
                     />
-                    <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className='mb-3'>
@@ -85,7 +85,6 @@ const SignupForm = () => {
                         value={userFormData.email}
                         required
                     />
-                    <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className='mb-3'>
@@ -98,7 +97,6 @@ const SignupForm = () => {
                         value={userFormData.password}
                         required
                     />
-                    <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
                 </Form.Group>
                 <Button
                     disabled={!(userFormData.username && userFormData.email && userFormData.password)}

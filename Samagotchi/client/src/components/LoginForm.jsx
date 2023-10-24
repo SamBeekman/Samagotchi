@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations'; //------------------------must match mutation
+import { LOGIN_USER } from '../utils/mutations';
+import { Form, Button, Alert } from 'react-bootstrap';
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' });
@@ -61,7 +62,6 @@ const LoginForm = () => {
                         value={userFormData.email}
                         required
                     />
-                    <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className='mb-3'>
@@ -74,7 +74,6 @@ const LoginForm = () => {
                         value={userFormData.password}
                         required
                     />
-                    <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
                 </Form.Group>
                 <Button
                     disabled={!(userFormData.email && userFormData.password)}
