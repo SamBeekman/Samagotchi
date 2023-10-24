@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default function Homepage() {
 
-    const [showModal, setShowModal] = useState(false);
-
     return (
         <div>
 
