@@ -1,59 +1,123 @@
-// import { gql } from '@apollo/client';
+import { gql } from '@apollo/client';
 
-// export const LOGIN_USER = gql`
-//     mutation login($email: String!, $password: String!) {
-//         login(email: $email, password: $password) {
-//             token
-//             user {
-//                 _id
-//                 username
-//             }
-//         }
-//     }
-// `;
+// login(email: String!, password: String!): Auth
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                _id
+                username
+            }
+        }
+    }
+`;
 
-// export const ADD_USER = gql`
-//     mutation addUser($username: String!, $email: String!, $password: String!) {
-//         addUser(username: $username, email: $email, password: $password) {
-//             token
-//             user {
-//                 _id
-//                 username
-//             }
-//         }
-//     }
-// `;
+// addUser(username: String!, email: String!, password: String!): Auth
+export const ADD_USER = gql`
+    mutation addUser($username: String!, $email: String!, $password: String!) {
+        addUser(username: $username, email: $email, password: $password) {
+            token
+            user {
+                _id
+                username
+            }
+        }
+    }
+`;
 
-// export const SAVE_BOOK = gql`
-//     mutation saveBook($bookInput: BookInput!) {
-//         saveBook(bookInput: $bookInput) {
-//             _id
-//             username
-//             savedBooks {
-//                 bookId
-//                 title
-//                 authors
-//                 description
-//                 image
-//                 link
-//             }
-//         }
-//     }
-// `;
+// addFriend(username: String!): Auth
+export const ADD_FRIEND = gql`
+    mutation addFriend($username: String!) {
+        addFriend(username: $username) {
+            _id
+            username
+            email
+            avatar
+            myFriends {
+                _id
+                username
+                email
+                avatar
+                myFriends
+                myPets
+            }
+            myPets {
+                _id
+                species
+                sprite
+                happiness
+                hungry
+                sleepy
+                poopy
+                fitness
+            }
+        }
+    }
+`;
 
-// export const REMOVE_BOOK = gql`
-//     mutation removeBook($bookId: String!) {
-//         removeBook(bookId: $bookId) {
-//             _id
-//             username
-//             savedBooks {
-//                 bookId
-//                 title
-//                 authors
-//                 description
-//                 image
-//                 link
-//             }
-//         }
-//     }
-// `;
+// removeFriend(username: String!): Auth
+export const REMOVE_FRIEND = gql`
+    mutation removeFriend($username: String!) {
+        removeFriend(username: $username) {
+            _id
+            username
+            email
+            avatar
+            myFriends {
+                _id
+                username
+                email
+                avatar
+                myFriends
+                myPets
+            }
+            myPets {
+                _id
+                species
+                sprite
+                happiness
+                hungry
+                sleepy
+                poopy
+                fitness
+            }
+        }
+    }
+`;
+
+// addPet(petInput: PetInput!): Auth
+export const ADD_PET = gql`
+    mutation addPet($petInput: PetInput!) {
+        addPet(petInput: $petInput) {
+            _id
+            species
+            sprite
+            happiness
+            hungry
+            sleepy
+            poopy
+            fitness
+        }
+    }
+`;
+
+// removePet(id: String!): Auth
+export const REMOVE_PET = gql`
+    mutation removePet($_id: ID!) {
+        removePet(_id: $_id) {
+            _id
+            species
+            sprite
+            happiness
+            hungry
+            sleepy
+            poopy
+            fitness
+        }
+    }
+`;
+
+
+
+

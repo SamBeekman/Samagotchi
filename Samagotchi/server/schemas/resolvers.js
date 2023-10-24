@@ -11,7 +11,7 @@ const resolvers = {
                 console.log(user);
                 return user;
             }
-            throw new AuthenticationError('No User Found');
+            throw AuthenticationError;
         },
         searchUsers: async (parent, { username }) => {
             if (username) {
@@ -22,7 +22,7 @@ const resolvers = {
                     throw new AuthenticationError('No User Found');
                 }
             }
-            throw new AuthenticationError('Invalid input');
+            throw AuthenticationError;
         },
     },
 
@@ -31,13 +31,13 @@ const resolvers = {
             const user = await User.findOne({ email });
 
             if (!user) {
-                throw new AuthenticationError('No User Found');
+                throw AuthenticationError;
             }
 
             const correctPw = await user.isCorrectPassword(password);
 
             if (!correctPw) {
-                throw new AuthenticationError('Password is incorrect');
+                throw AuthenticationError;
             }
 
             const token = signToken(user);
@@ -66,7 +66,7 @@ const resolvers = {
                     throw new UserInputError('User not found');
                 }
             }
-            throw new AuthenticationError('Authentication error');
+            throw AuthenticationError;
         },
         removeFriend: async (parent, { username }, context) => {
             if (context.user) {
@@ -85,7 +85,7 @@ const resolvers = {
                     throw new UserInputError('User not found');
                 }
             }
-            throw new AuthenticationError('Authentication error');
+            throw AuthenticationError;
         },
         addPet: async (parent, { petInput }, context) => {
             if (context.user) {
@@ -98,7 +98,7 @@ const resolvers = {
                     }
                 );
             }
-            throw new AuthenticationError('No pet found');
+            throw AuthenticationError;
         },
         removePet: async (parent, { _id }, context) => {
             if (context.user) {
@@ -108,7 +108,7 @@ const resolvers = {
                     { new: true },
                 );
             }
-            throw new AuthenticationError('No pet found');
+            throw AuthenticationError;
         },
     },
 };

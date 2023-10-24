@@ -38,14 +38,14 @@ type Auth {
 
 type Query {
     me: User
-    searchUsers(id: String!): User
+    searchUsers(username: String!): User
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addFriend(id: String!): Auth
-    removeFriend(id:String!): Auth
+    addFriend(username: String!): Auth
+    removeFriend(username: String!): Auth
     addPet(petInput: PetInput!): Auth
     removePet(id: String!): Auth
     
