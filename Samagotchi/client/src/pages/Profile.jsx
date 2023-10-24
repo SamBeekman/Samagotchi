@@ -4,6 +4,13 @@ export default function Profile() {
 
             <h1>Profile Page</h1>
 
+
+            <div>
+                <div>Play</div>
+                <div>User Avatar</div>
+                <div>User Pets</div>
+            </div>
+
         </div>
     );
 }

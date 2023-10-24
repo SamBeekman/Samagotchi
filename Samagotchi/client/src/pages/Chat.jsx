@@ -4,6 +4,18 @@ export default function Chat() {
 
             <h1>Chat Page</h1>
 
+            <div>
+                <div>
+                    <button>Chat</button>
+                    <button>Search for friends</button>
+                </div>
+                <div>
+                    <div>User Friends List/ User Profiles</div>
+                </div>
+            </div>
+
+            <div>WEBSOCKET CHAT WINDOW</div>
+
         </div>
     );
 }
