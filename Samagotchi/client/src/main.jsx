@@ -6,10 +6,11 @@ import App from './App.jsx'
 import Chat from './pages/Chat'
 import Friends from './pages/Friends'
 import Homepage from './pages/Homepage'
-import LoginSignup from './pages/LoginSignup'
+import Login from './pages/Login'
 import Payment from './pages/Payment'
 import Play from './pages/Play'
 import Profile from './pages/Profile'
+import Signup from './pages/Signup'
 
 
 const router = createBrowserRouter([
@@ -31,8 +32,8 @@ const router = createBrowserRouter([
         element: <Friends />
       },
       {
-        path: '/login-signup',
-        element: <LoginSignup />
+        path: '/login',
+        element: <Login />
       },
       {
         path: '/payment',
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/profile/:username',
         element: <Profile />
+      },
+      {
+        path: '/signup',
+        element: <Signup />
       },
     ]
   }
