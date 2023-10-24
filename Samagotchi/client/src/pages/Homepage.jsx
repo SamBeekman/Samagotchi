@@ -1,12 +1,15 @@
-
 import './Homepage.css'
 import { Link } from 'react-router-dom';
 
 export default function Homepage() {
+
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <div>
 
             <h1>Home Page</h1>
+
             <Link to="/login">
                 <button>Login</button>
             </Link>
