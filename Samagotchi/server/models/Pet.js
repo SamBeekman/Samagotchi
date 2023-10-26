@@ -1,36 +1,40 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 
-const petSchema = new Schema({
+const petSchema = new Schema(
+  {
+    sprite: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    happiness: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    hungry: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+    sleepy: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    poopy: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+    fitness: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+  });
 
-  species: {
-    type: Number,
-    required: true,
-  },
-  sprite: {
-    type: Number,
-    required: true,
-  },
-  happiness: {
-    type: Number,
-    required: true,
-  },
-  hungry: {
-    type: Boolean,
-    required: true,
-  },
-  sleepy: {
-    type: Boolean,
-    required: true,
-  },
-  poopy: {
-    type: Boolean,
-    required: true,
-  },
-  fitness: {
-    type: Number,
-    required: true,
-  },
-});
 
-module.exports = petSchema;
+const Pet = model('Pet', petSchema);
+module.exports = Pet;

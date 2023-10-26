@@ -39,12 +39,19 @@ export const ADD_FRIEND = gql`
                 username
                 email
                 avatar
-                myFriends
-                myPets
+                myFriends{
+                    _id
+                    username
+                    email
+                    avatar
+                }
+                myPets {                    
+                    sprite
+                    happiness
+                }
             }
             myPets {
                 _id
-                species
                 sprite
                 happiness
                 hungry
@@ -74,7 +81,6 @@ export const REMOVE_FRIEND = gql`
             }
             myPets {
                 _id
-                species
                 sprite
                 happiness
                 hungry
@@ -88,10 +94,9 @@ export const REMOVE_FRIEND = gql`
 
 // addPet(petInput: PetInput!): Auth
 export const ADD_PET = gql`
-    mutation addPet($petInput: PetInput!) {
-        addPet(petInput: $petInput) {
+    mutation addPet($sprite: Int!) {
+        addPet(sprite: $sprite) {
             _id
-            species
             sprite
             happiness
             hungry
@@ -107,7 +112,6 @@ export const REMOVE_PET = gql`
     mutation removePet($_id: ID!) {
         removePet(_id: $_id) {
             _id
-            species
             sprite
             happiness
             hungry

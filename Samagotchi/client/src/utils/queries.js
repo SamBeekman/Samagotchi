@@ -13,12 +13,19 @@ export const GET_ME = gql`
                 username
                 email
                 avatar
-                myFriends
-                myPets
+                myFriends{
+                    _id
+                    username
+                    email
+                    avatar
+                }
+                myPets {                    
+                    sprite
+                    happiness
+                }
             }
             myPets {
                 _id
-                species
                 sprite
                 happiness
                 hungry
@@ -31,32 +38,39 @@ export const GET_ME = gql`
 `;
 
 // searchUsers(username: String!): User
-export const GET_ALL_USERS = gql`
-    query searchUsers($username: String!){
-        searchUsers(username: $username){
+export const GET_USERS = gql`
+query searchUsers($username: String!){
+    searchUsers(username: $username){
+        _id
+        username
+        email
+        avatar
+        myFriends {
             _id
             username
             email
             avatar
-            myFriends {
+            myFriends{
                 _id
                 username
                 email
                 avatar
-                myFriends
-                myPets
             }
-            myPets {
-                _id
-                species
+            myPets {                    
                 sprite
                 happiness
-                hungry
-                sleepy
-                poopy
-                fitness
             }
         }
+        myPets {
+            _id
+            sprite
+            happiness
+            hungry
+            sleepy
+            poopy
+            fitness
+        }
     }
+}
 `;
 

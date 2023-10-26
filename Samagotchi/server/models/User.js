@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const petSchema = require('./Pet');
+// const petSchema = require('./Pet');
 
 const userSchema = new Schema(
   {
@@ -30,7 +30,10 @@ const userSchema = new Schema(
         ref: 'User',
       }, //-------------------------------------------------------------------may need to make a virtual for getting friend data?
     ],
-    myPets: [petSchema],
+    myPets: {
+      type: Schema.Types.ObjectId,
+      ref: 'Pet',
+    },
   }
 );
 

@@ -2,7 +2,6 @@ const typeDefs = `
 
 input PetInput {
     _id: ID!
-    species: Int!
     sprite: Int!
     happiness: Int!
     hungry: Boolean!
@@ -22,7 +21,6 @@ type User {
 
 type Pet {
     _id: ID!
-    species: Int!
     sprite: Int!
     happiness: Int!
     hungry: Boolean!
@@ -44,10 +42,10 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addFriend(username: String!): Auth
-    removeFriend(username: String!): Auth
-    addPet(petInput: PetInput!): Auth
-    removePet(id: String!): Auth
+    addFriend(username: String!): User
+    removeFriend(username: String!): User
+    addPet(sprite: Int!): Pet
+    removePet(id: String!): Pet
     
 }
 `;

@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Pet } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 // const { useParams} = require();  may need for searchUsers
 
@@ -87,11 +87,29 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        addPet: async (parent, { petInput }, context) => {
+        // addPet: async (parent, { petInput }, context) => {
+        //     if (context.user) {
+        //         return User.findOneAndUpdate(
+        //             { _id: context.user._id },
+        //             { $addToSet: { myPets: petInput } },
+        //             {
+        //                 new: true,
+        //                 runValidators: true,
+        //             }
+        //         );
+        //     }
+        //     throw AuthenticationError;
+        // },
+
+
+
+        addPet: async (parent, { sprite }, context) => {
+
             if (context.user) {
+                const newPet = await Pet.create()
                 return User.findOneAndUpdate(
                     { _id: context.user._id },
-                    { $addToSet: { myPets: petInput } },
+                    { $addToSet: { myPets: newPet } },
                     {
                         new: true,
                         runValidators: true,
@@ -100,6 +118,13 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+
+
+
+
+
+
+
         removePet: async (parent, { _id }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
