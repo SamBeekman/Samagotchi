@@ -6,6 +6,9 @@ export default function PetSelect() {
 
     const [currentPet, setCurrentPet] = useState();
     const [data, setData] = useState(petDummyData);
+    const [increaseExp, setIncreaseExp] = useState(data[0].exp);
+    const [increaseLevel, setIncreaseLevel] = useState(data[0].level);
+    const [increaseReqExp, setIncreaseReqExp] = useState(data[0].reqExp);
 
     const [hungryLevel, setHungryLevel] = useState(data[0].hungryLevel);
     const [sleepyLevel, setSleepyLevel] = useState(data[0].sleepyLevel);
@@ -36,40 +39,44 @@ export default function PetSelect() {
 
     // increase levels
     const increaseHungry = () => {
-        setHungryLevel((val) => val + 1);
+        setHungryLevel((val) => val - 1);
     };
 
     const increaseSleepy = () => {
-        setSleepyLevel((val) => val + 1);
+        setSleepyLevel((val) => val - 1);
     };
 
     const increaseDirty = () => {
-        setDirtyLevel((val) => val + 1);
+        setDirtyLevel((val) => val - 1);
     };
 
     const increaseLazy = () => {
-        setLazyLevel((val) => val + 1);
+        setLazyLevel((val) => val - 1);
     };
 
     // clear levels
     const clearHungryLevel = () => {
-        setHungryLevel(0);
+        setHungryLevel(100);
         setIsHungry(false);
+        setIncreaseExp((val) => val + 1);
     };
 
     const clearSleepyLevel = () => {
-        setSleepyLevel(0);
+        setSleepyLevel(100);
         setIsSleepy(false);
+        setIncreaseExp((val) => val + 1);
     };
 
     const clearDirtyLevel = () => {
-        setDirtyLevel(0);
+        setDirtyLevel(100);
         setIsDirty(false);
+        setIncreaseExp((val) => val + 1);
     };
 
     const clearLazyLevel = () => {
-        setLazyLevel(0);
+        setLazyLevel(100);
         setIsLazy(false);
+        setIncreaseExp((val) => val + 1);
     };
 
     // set status
@@ -89,6 +96,13 @@ export default function PetSelect() {
         setIsLazy(true);
     };
 
+    // level up
+    const levelUp = () => {
+        setIncreaseLevel((val) => val + 1);
+        setIncreaseExp(0);
+        setIncreaseReqExp((val) => val + 10);
+    };
+
     return (
         <>
             <div className="pet-buttons">
@@ -100,6 +114,10 @@ export default function PetSelect() {
 
             {currentPet ? <Play
                 currentPet={currentPet}
+                increaseExp={increaseExp}
+                increaseLevel={increaseLevel}
+                increaseReqExp={increaseReqExp}
+                levelUp={levelUp}
 
                 isHungry={isHungry}
                 hungryLevel={hungryLevel}

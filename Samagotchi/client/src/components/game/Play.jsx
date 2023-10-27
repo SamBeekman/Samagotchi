@@ -21,7 +21,7 @@ export default function Play(props) {
     }, []);
 
     useEffect(() => {
-        if (props.hungryLevel >= props.currentPet.hungryThreshold) {
+        if (props.hungryLevel <= props.currentPet.hungryThreshold) {
             props.hasBecomeHungry();
         };
     }, [props.hungryLevel])
@@ -38,7 +38,7 @@ export default function Play(props) {
     }, []);
 
     useEffect(() => {
-        if (props.sleepyLevel >= props.currentPet.sleepyThreshold) {
+        if (props.sleepyLevel <= props.currentPet.sleepyThreshold) {
             props.hasBecomeSleepy();
         };
     }, [props.sleepyLevel])
@@ -55,7 +55,7 @@ export default function Play(props) {
     }, []);
 
     useEffect(() => {
-        if (props.dirtyLevel >= props.currentPet.dirtyThreshold) {
+        if (props.dirtyLevel <= props.currentPet.dirtyThreshold) {
             props.hasBecomeDirty();
         };
     }, [props.dirtyLevel])
@@ -72,7 +72,7 @@ export default function Play(props) {
     }, []);
 
     useEffect(() => {
-        if (props.lazyLevel >= props.currentPet.lazyThreshold) {
+        if (props.lazyLevel <= props.currentPet.lazyThreshold) {
             props.hasBecomeLazy();
         };
     }, [props.lazyLevel])
@@ -81,25 +81,30 @@ export default function Play(props) {
     // feed pet
     const feedPet = () => {
         props.clearHungryLevel();
-        console.log(`reset hungry level to 0`);
+        console.log(`reset hungry level to 100%`);
     };
 
     // sleep pet
     const sleepPet = () => {
         props.clearSleepyLevel();
-        console.log(`reset sleepy level to 0`);
+        console.log(`reset sleepy level to 100%`);
     };
 
     // clean pet
     const cleanPet = () => {
         props.clearDirtyLevel();
-        console.log(`reset dirty level to 0`);
+        console.log(`reset dirty level to 100%`);
     };
 
     // walk pet
     const walkPet = () => {
         props.clearLazyLevel();
-        console.log(`reset lazy level to 0`);
+        console.log(`reset lazy level to 100%`);
+    };
+
+    // level up
+    const levelUp = () => {
+        props.levelUp();
     };
 
     return (
@@ -108,30 +113,35 @@ export default function Play(props) {
 
             <section>
 
+
+
                 <h2>Current pet is: {props.currentPet.name} </h2>
                 <h3>{props.currentPet.name} is {props.currentPet.age} days old</h3>
-                <h3>Level : {props.currentPet.level}</h3>
-                <h3>Exp: {props.currentPet.exp} / 10</h3>
+                <h3>Level : {props.increaseLevel}</h3>
+                <button disabled={props.increaseExp >= props.increaseReqExp ? false : true} onClick={() => levelUp()}>Level Up</button>
+                <h3>Exp: {props.increaseExp} / {props.increaseReqExp}</h3>
 
                 <div className="action-buttons">
                     <div>
                         is hungry? {props.isHungry ? "yes" : "no"}
-                        <button className="action feed" onClick={() => feedPet()}>Feed</button>
+
+                        {/* disabled={props.isHungry ? false : true} */}
+                        <button disabled={false} className="action feed" onClick={() => feedPet()}>Feed</button>
                         {props.hungryLevel}
                     </div>
                     <div>
                         is sleepy? {props.isSleepy ? "yes" : "no"}
-                        <button className="action sleep" onClick={() => sleepPet()}>Sleep</button>
+                        <button disabled={props.isSleepy ? false : true} className="action sleep" onClick={() => sleepPet()}>Sleep</button>
                         {props.sleepyLevel}
                     </div>
                     <div>
                         is dirty? {props.isDirty ? "yes" : "no"}
-                        <button className="action clean" onClick={() => cleanPet()}>Clean</button>
+                        <button disabled={props.isDirty ? false : true} className="action clean" onClick={() => cleanPet()}>Clean</button>
                         {props.dirtyLevel}
                     </div>
                     <div>
                         needs exercise? {props.isLazy ? "yes" : "no"}
-                        <button className="action walk" onClick={() => walkPet()}>Walk</button>
+                        <button disabled={props.isLazy ? false : true} className="action walk" onClick={() => walkPet()}>Walk</button>
                         {props.lazyLevel}
                     </div>
                 </div>
