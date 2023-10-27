@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 export default function Play(props) {
 
     // timers
-    const HUNGRY_TIMER = 10 * 3;
-    const SLEEPY_TIMER = 1000 * 5;
-    const DIRTY_TIMER = 1000 * 7;
-    const LAZY_TIMER = 1000 * 9;
+    const HUNGRY_TIMER = 1000 * 1;
+    const SLEEPY_TIMER = 1000 * 2;
+    const DIRTY_TIMER = 1000 * 3;
+    const LAZY_TIMER = 1000 * 4;
 
     // hungry level
     useEffect(() => {
@@ -80,25 +80,25 @@ export default function Play(props) {
     // feed pet
     const feedPet = () => {
         props.clearHungryLevel();
-        console.log(`reset hungry level to 100%`);
+        console.log(`increased hungry level by 20`);
     };
 
     // sleep pet
     const sleepPet = () => {
         props.clearSleepyLevel();
-        console.log(`reset sleepy level to 100%`);
+        console.log(`increased sleepy level by 20`);
     };
 
     // clean pet
     const cleanPet = () => {
         props.clearDirtyLevel();
-        console.log(`reset dirty level to 100%`);
+        console.log(`increased dirty level by 20`);
     };
 
     // walk pet
     const walkPet = () => {
         props.clearLazyLevel();
-        console.log(`reset lazy level to 100%`);
+        console.log(`increased lazy level by 20`);
     };
 
     // level up
@@ -112,10 +112,7 @@ export default function Play(props) {
 
             <section>
 
-
-
                 <h2>Current pet is: {props.currentPet.name} </h2>
-                <h3>{props.currentPet.name} is {props.currentPet.age} days old</h3>
                 <h3>Level : {props.increaseLevel}</h3>
                 <button disabled={props.increaseExp >= props.increaseReqExp ? false : true} onClick={() => levelUp()}>Level Up</button>
                 <h3>Exp: {props.increaseExp} / {props.increaseReqExp}</h3>

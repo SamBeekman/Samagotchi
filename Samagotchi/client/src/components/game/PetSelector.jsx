@@ -97,7 +97,7 @@ export default function PetSelect() {
     // level up
     const levelUp = () => {
         setIncreaseLevel((val) => val + 1);
-        setIncreaseExp(0);
+        setIncreaseExp((val) => val - increaseReqExp);
         setIncreaseReqExp((val) => val + 10);
     };
 
