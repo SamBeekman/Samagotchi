@@ -3,11 +3,10 @@ import { useEffect, useState } from "react";
 export default function Play(props) {
 
     // timers
-    const HUNGRY_TIMER = 1000 * 3;
+    const HUNGRY_TIMER = 10 * 3;
     const SLEEPY_TIMER = 1000 * 5;
     const DIRTY_TIMER = 1000 * 7;
     const LAZY_TIMER = 1000 * 9;
-    const AUTO_SAVE_TIMER = 1000 * 60;
 
     // hungry level
     useEffect(() => {

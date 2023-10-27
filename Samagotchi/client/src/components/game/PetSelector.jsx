@@ -4,8 +4,8 @@ import Play from './Play';
 
 export default function PetSelect() {
 
-    const [currentPet, setCurrentPet] = useState();
     const [data, setData] = useState(petDummyData);
+    const [currentPet, setCurrentPet] = useState();
     const [increaseExp, setIncreaseExp] = useState(data[0].exp);
     const [increaseLevel, setIncreaseLevel] = useState(data[0].level);
     const [increaseReqExp, setIncreaseReqExp] = useState(data[0].reqExp);
@@ -15,21 +15,11 @@ export default function PetSelect() {
     const [dirtyLevel, setDirtyLevel] = useState(data[0].dirtyLevel);
     const [lazyLevel, setLazyLevel] = useState(data[0].lazyLevel);
 
-    const [isHungry, setIsHungry] = useState(data.isHungry);
-    const [isSleepy, setIsSleepy] = useState(data.isSleepy);
-    const [isDirty, setIsDirty] = useState(data.isDirty);
-    const [isLazy, setIsLazy] = useState(data.isLazy);
+    const [isHungry, setIsHungry] = useState(data[0].isHungry);
+    const [isSleepy, setIsSleepy] = useState(data[0].isSleepy);
+    const [isDirty, setIsDirty] = useState(data[0].isDirty);
+    const [isLazy, setIsLazy] = useState(data[0].isLazy);
 
-    // // load data
-    // useEffect(() => {
-    //     const savingInterval = setInterval(() => {
-    //         console.log(`saving data...  ${Date.now()}`);
-    //     }, AUTO_SAVE_TIMER);
-
-    //     return () => {
-    //         clearInterval(savingInterval);
-    //     };
-    // }, []);
 
     // pet selection
     const selectPet = (index) => {
@@ -39,42 +29,50 @@ export default function PetSelect() {
 
     // increase levels
     const increaseHungry = () => {
-        setHungryLevel((val) => val - 1);
+        setHungryLevel((val) => {
+            return val > 0 ? val - 1 : val;
+        });
     };
 
     const increaseSleepy = () => {
-        setSleepyLevel((val) => val - 1);
+        setSleepyLevel((val) => {
+            return val > 0 ? val - 1 : val;
+        });
     };
 
     const increaseDirty = () => {
-        setDirtyLevel((val) => val - 1);
+        setDirtyLevel((val) => {
+            return val > 0 ? val - 1 : val;
+        });
     };
 
     const increaseLazy = () => {
-        setLazyLevel((val) => val - 1);
+        setLazyLevel((val) => {
+            return val > 0 ? val - 1 : val;
+        });
     };
 
     // clear levels
     const clearHungryLevel = () => {
-        setHungryLevel(100);
+        setHungryLevel((val) => val + 20);
         setIsHungry(false);
         setIncreaseExp((val) => val + 1);
     };
 
     const clearSleepyLevel = () => {
-        setSleepyLevel(100);
+        setSleepyLevel((val) => val + 20);
         setIsSleepy(false);
         setIncreaseExp((val) => val + 1);
     };
 
     const clearDirtyLevel = () => {
-        setDirtyLevel(100);
+        setDirtyLevel((val) => val + 20);
         setIsDirty(false);
         setIncreaseExp((val) => val + 1);
     };
 
     const clearLazyLevel = () => {
-        setLazyLevel(100);
+        setLazyLevel((val) => val + 20);
         setIsLazy(false);
         setIncreaseExp((val) => val + 1);
     };
@@ -108,8 +106,8 @@ export default function PetSelect() {
             <div className="pet-buttons">
                 Pets
                 <button className="pet1" onClick={() => selectPet(1)}>1</button>
-                <button className="pet2" onClick={() => selectPet(1)}>2</button>
-                <button className="pet3" onClick={() => selectPet(1)}>3</button>
+                <button className="pet2" onClick={() => selectPet(2)}>2</button>
+                <button className="pet3" onClick={() => selectPet(3)}>3</button>
             </div>
 
             {currentPet ? <Play
