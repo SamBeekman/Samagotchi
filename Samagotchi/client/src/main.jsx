@@ -9,7 +9,7 @@ import Homepage from './pages/Homepage'
 import Login from './pages/Login'
 import Payment from './pages/Payment'
 // import Play from './pages/Play'
-// import Play from './components/game/Play'
+// import Play from './components/game/oldPlay'
 import PetSelector from './components/game/PetSelector'
 import Profile from './pages/Profile'
 import Signup from './pages/Signup'
@@ -43,6 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/play',
+        // element: <Play />
         element: <PetSelector />
       },
       {
