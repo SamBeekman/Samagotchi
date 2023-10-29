@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { petDummyData } from "../customHooks/useLoadData";
 import Play from './Play';
+import { Container } from 'react-bootstrap';
 
 export default function PetSelect() {
 
@@ -157,7 +158,8 @@ export default function PetSelect() {
     };
 
     return (
-        <>
+
+        <Container>
             <div className="pet-buttons">
                 Pets
                 <button className="pet1" onClick={() => selectPet(1)}>1</button>
@@ -197,7 +199,8 @@ export default function PetSelect() {
                 clearLazyLevel={clearLazyLevel}
                 hasBecomeLazy={hasBecomeLazy}>
             </Play> : <p>pick a pet</p>}
-        </>
+        </Container>
+
     )
 };
 
