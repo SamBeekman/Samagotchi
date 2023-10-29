@@ -2,7 +2,6 @@ export const petDummyData = [
     {
         name: "mike",
         sprite: 1,
-        age: 0,
         level: 1,
         exp: 0,
         reqExp: 10,
@@ -22,7 +21,6 @@ export const petDummyData = [
     {
         name: "sam",
         sprite: 1,
-        age: 0,
         level: 1,
         exp: 0,
         reqExp: 10,
@@ -41,7 +39,6 @@ export const petDummyData = [
     }, {
         name: "bee",
         sprite: 1,
-        age: 0,
         level: 1,
         exp: 0,
         reqExp: 10,

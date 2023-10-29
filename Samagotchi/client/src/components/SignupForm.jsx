@@ -3,6 +3,7 @@ import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
 import { Form, Button, Alert } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 
 const SignupForm = () => {
     // set initial form state
@@ -56,55 +57,59 @@ const SignupForm = () => {
 
     return (
         <>
-            {/* This is needed for the validation functionality above */}
-            <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-                {/* show alert if server response is bad */}
-                <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
-                    Something went wrong with your signup!
-                </Alert>
+            <Container fluid>
+                {/* This is needed for the validation functionality above */}
+                <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+                    {/* show alert if server response is bad */}
+                    <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+                        Something went wrong with your signup!
+                    </Alert>
 
-                <Form.Group className='mb-3'>
-                    <Form.Label htmlFor='username'>Username</Form.Label>
-                    <Form.Control
-                        type='text'
-                        placeholder='Your username'
-                        name='username'
-                        onChange={handleInputChange}
-                        value={userFormData.username}
-                        required
-                    />
-                </Form.Group>
+                    <Form.Group className='mb-3'>
+                        <Form.Label htmlFor='username'>Username</Form.Label>
+                        <Form.Control
+                            type='text'
+                            placeholder='Your username'
+                            name='username'
+                            onChange={handleInputChange}
+                            value={userFormData.username}
+                            required
+                        />
+                    </Form.Group>
 
-                <Form.Group className='mb-3'>
-                    <Form.Label htmlFor='email'>Email</Form.Label>
-                    <Form.Control
-                        type='email'
-                        placeholder='Your email address'
-                        name='email'
-                        onChange={handleInputChange}
-                        value={userFormData.email}
-                        required
-                    />
-                </Form.Group>
+                    <Form.Group className='mb-3'>
+                        <Form.Label htmlFor='email'>Email</Form.Label>
+                        <Form.Control
+                            type='email'
+                            placeholder='Your email address'
+                            name='email'
+                            onChange={handleInputChange}
+                            value={userFormData.email}
+                            required
+                        />
+                    </Form.Group>
 
-                <Form.Group className='mb-3'>
-                    <Form.Label htmlFor='password'>Password</Form.Label>
-                    <Form.Control
-                        type='password'
-                        placeholder='Your password'
-                        name='password'
-                        onChange={handleInputChange}
-                        value={userFormData.password}
-                        required
-                    />
-                </Form.Group>
-                <Button
-                    disabled={!(userFormData.username && userFormData.email && userFormData.password)}
-                    type='submit'
-                    variant='success'>
-                    Submit
-                </Button>
-            </Form>
+                    <Form.Group className='mb-3'>
+                        <Form.Label htmlFor='password'>Password</Form.Label>
+                        <Form.Control
+                            type='password'
+                            placeholder='Your password'
+                            name='password'
+                            onChange={handleInputChange}
+                            value={userFormData.password}
+                            required
+                        />
+                    </Form.Group>
+                    <div className="d-flex justify-content-center">
+                        <Button
+                            disabled={!(userFormData.username && userFormData.email && userFormData.password)}
+                            type='submit'
+                            variant='primary'>
+                            Sign Up
+                        </Button>
+                    </div>
+                </Form>
+            </Container>
         </>
     );
 };

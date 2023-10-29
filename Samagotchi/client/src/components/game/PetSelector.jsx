@@ -1,30 +1,85 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { petDummyData } from "../customHooks/useLoadData";
 import Play from './Play';
 
 export default function PetSelect() {
 
     const [data, setData] = useState(petDummyData);
-    const [currentPet, setCurrentPet] = useState();
-    const [increaseExp, setIncreaseExp] = useState(data[0].exp);
-    const [increaseLevel, setIncreaseLevel] = useState(data[0].level);
-    const [increaseReqExp, setIncreaseReqExp] = useState(data[0].reqExp);
+    const [currentPet, setCurrentPet] = useState(data[0]); // will eventually come from local storage then from database
 
-    const [hungryLevel, setHungryLevel] = useState(data[0].hungryLevel);
-    const [sleepyLevel, setSleepyLevel] = useState(data[0].sleepyLevel);
-    const [dirtyLevel, setDirtyLevel] = useState(data[0].dirtyLevel);
-    const [lazyLevel, setLazyLevel] = useState(data[0].lazyLevel);
+    const [increaseExp, setIncreaseExp] = useState(currentPet.exp);
+    const [increaseLevel, setIncreaseLevel] = useState(currentPet.level);
+    const [increaseReqExp, setIncreaseReqExp] = useState(currentPet.reqExp);
 
-    const [isHungry, setIsHungry] = useState(data[0].isHungry);
-    const [isSleepy, setIsSleepy] = useState(data[0].isSleepy);
-    const [isDirty, setIsDirty] = useState(data[0].isDirty);
-    const [isLazy, setIsLazy] = useState(data[0].isLazy);
+    const [hungryLevel, setHungryLevel] = useState(currentPet.hungryLevel);
+    const [sleepyLevel, setSleepyLevel] = useState(currentPet.sleepyLevel);
+    const [dirtyLevel, setDirtyLevel] = useState(currentPet.dirtyLevel);
+    const [lazyLevel, setLazyLevel] = useState(currentPet.lazyLevel);
+
+    const [isHungry, setIsHungry] = useState(currentPet.isHungry);
+    const [isSleepy, setIsSleepy] = useState(currentPet.isSleepy);
+    const [isDirty, setIsDirty] = useState(currentPet.isDirty);
+    const [isLazy, setIsLazy] = useState(currentPet.isLazy);
 
 
-    // pet selection
+    useEffect(() => {
+        setIncreaseExp(currentPet.exp);
+        setIncreaseLevel(currentPet.level);
+        setIncreaseReqExp(currentPet.reqExp);
+        setHungryLevel(currentPet.hungryLevel);
+        setSleepyLevel(currentPet.sleepyLevel);
+        setDirtyLevel(currentPet.dirtyLevel);
+        setLazyLevel(currentPet.lazyLevel);
+        setIsHungry(currentPet.isHungry);
+        setIsSleepy(currentPet.isSleepy);
+        setIsDirty(currentPet.isDirty);
+        setIsLazy(currentPet.isLazy);
+    }, [currentPet]);
+
+
+    // load pet data in local storage
+    useEffect(() => {
+        const pet1Data = localStorage.getItem('Pet 1');
+        if (!pet1Data) {
+            localStorage.setItem('Pet 1', JSON.stringify(data[0]));
+        }
+
+        const pet2Data = localStorage.getItem('Pet 2');
+        if (!pet2Data) {
+            localStorage.setItem('Pet 2', JSON.stringify(data[1]));
+        }
+
+        const pet3Data = localStorage.getItem('Pet 3');
+        if (!pet3Data) {
+            localStorage.setItem('Pet 3', JSON.stringify(data[2]));
+        }
+    }, []);
+
+
+    // save and update current pet values to local storage
+    // move to Play????
+
+    // save
+
+    const save = () => {
+        localStorage.setItem('Pet X', JSON.stringify(currentPet));
+    };
+
+    // useEffect(() => {
+    //     localStorage.setItem('Pet X', JSON.stringify(currentPet));
+    // }, [currentPet]);
+
+
+    // pet selection and get pet from local stoarge on switch
     const selectPet = (index) => {
-        setCurrentPet(data[index - 1]);
-        console.log(currentPet);
+
+        const petData = localStorage.getItem(`Pet ${index}`);
+        if (petData) {
+            const getPet = JSON.parse(petData);
+            setCurrentPet(getPet);
+        } else {
+            console.log('no pet data found');
+        }
     };
 
     // increase levels
@@ -116,6 +171,7 @@ export default function PetSelect() {
                 increaseLevel={increaseLevel}
                 increaseReqExp={increaseReqExp}
                 levelUp={levelUp}
+                save={save}
 
                 isHungry={isHungry}
                 hungryLevel={hungryLevel}

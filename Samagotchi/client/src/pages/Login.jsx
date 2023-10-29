@@ -1,12 +1,13 @@
 import LoginForm from '../components/LoginForm';
+import SignupForm from '../components/SignupForm';
 
 export default function Login() {
     return (
         <div>
 
-            <h1>Login Page</h1>
-
             <LoginForm />
+
+            <SignupForm />
 
         </div>
     );

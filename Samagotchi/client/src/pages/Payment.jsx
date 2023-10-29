@@ -1,10 +1,12 @@
+import Image from 'react-bootstrap/Image';
+
 export default function Payment() {
     return (
         <div>
 
-            <h1>Payment Page</h1>
 
-            <img src="/Payment.png" alt="payment form" />
+
+            <Image src="/Payment.png" alt="payment form" fluid />
 
         </div>
     );

@@ -1,7 +1,9 @@
+import Image from 'react-bootstrap/Image';
+
 function Header() {
     return (
 
-        <div>Welcome to Sam-A-Gotchi</div>
+        <Image src="/logo.jpg" alt="payment form" fluid />
 
     );
 }

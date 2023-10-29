@@ -12,7 +12,7 @@ import Payment from './pages/Payment'
 // import Play from './components/game/oldPlay'
 import PetSelector from './components/game/PetSelector'
 import Profile from './pages/Profile'
-import Signup from './pages/Signup'
+// import Signup from './pages/Signup'
 
 
 const router = createBrowserRouter([
@@ -50,10 +50,10 @@ const router = createBrowserRouter([
         path: '/profile/:username',
         element: <Profile />
       },
-      {
-        path: '/signup',
-        element: <Signup />
-      },
+      // {
+      //   path: '/signup',
+      //   element: <Signup />
+      // },
     ]
   }
 ])
