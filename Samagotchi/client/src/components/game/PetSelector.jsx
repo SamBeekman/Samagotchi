@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { petDummyData } from "../customHooks/useLoadData";
 import Play from './Play';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 
 export default function PetSelect() {
 
     const [data, setData] = useState(petDummyData);
     const [currentPet, setCurrentPet] = useState(data[0]); // will eventually come from local storage then from database
 
-    const [increaseExp, setIncreaseExp] = useState(currentPet.exp);
-    const [increaseLevel, setIncreaseLevel] = useState(currentPet.level);
-    const [increaseReqExp, setIncreaseReqExp] = useState(currentPet.reqExp);
+    const [exp, setExp] = useState(currentPet.exp);
+    const [level, setLevel] = useState(currentPet.level);
+    const [reqExp, setReqExp] = useState(currentPet.reqExp);
+    const [sprite, setSprite] = useState(currentPet.sprite);
 
     const [hungryLevel, setHungryLevel] = useState(currentPet.hungryLevel);
     const [sleepyLevel, setSleepyLevel] = useState(currentPet.sleepyLevel);
@@ -23,10 +24,11 @@ export default function PetSelect() {
     const [isLazy, setIsLazy] = useState(currentPet.isLazy);
 
 
+
     useEffect(() => {
-        setIncreaseExp(currentPet.exp);
-        setIncreaseLevel(currentPet.level);
-        setIncreaseReqExp(currentPet.reqExp);
+        setExp(currentPet.exp);
+        setLevel(currentPet.level);
+        setReqExp(currentPet.reqExp);
         setHungryLevel(currentPet.hungryLevel);
         setSleepyLevel(currentPet.sleepyLevel);
         setDirtyLevel(currentPet.dirtyLevel);
@@ -35,53 +37,28 @@ export default function PetSelect() {
         setIsSleepy(currentPet.isSleepy);
         setIsDirty(currentPet.isDirty);
         setIsLazy(currentPet.isLazy);
+        setSprite(currentPet.sprite);
     }, [currentPet]);
 
 
     // load pet data in local storage
     useEffect(() => {
-        const pet1Data = localStorage.getItem('Pet 1');
+        const pet1Data = localStorage.getItem(`${data[0].name}`);
         if (!pet1Data) {
-            localStorage.setItem('Pet 1', JSON.stringify(data[0]));
+            localStorage.setItem(`${data[0].name}`, JSON.stringify(data[0]));
         }
 
-        const pet2Data = localStorage.getItem('Pet 2');
+        const pet2Data = localStorage.getItem(`${data[1].name}`);
         if (!pet2Data) {
-            localStorage.setItem('Pet 2', JSON.stringify(data[1]));
+            localStorage.setItem(`${data[1].name}`, JSON.stringify(data[1]));
         }
 
-        const pet3Data = localStorage.getItem('Pet 3');
+        const pet3Data = localStorage.getItem(`${data[2].name}`);
         if (!pet3Data) {
-            localStorage.setItem('Pet 3', JSON.stringify(data[2]));
+            localStorage.setItem(`${data[2].name}`, JSON.stringify(data[2]));
         }
     }, []);
 
-
-    // save and update current pet values to local storage
-    // move to Play????
-
-    // save
-
-    const save = () => {
-        localStorage.setItem('Pet X', JSON.stringify(currentPet));
-    };
-
-    // useEffect(() => {
-    //     localStorage.setItem('Pet X', JSON.stringify(currentPet));
-    // }, [currentPet]);
-
-
-    // pet selection and get pet from local stoarge on switch
-    const selectPet = (index) => {
-
-        const petData = localStorage.getItem(`Pet ${index}`);
-        if (petData) {
-            const getPet = JSON.parse(petData);
-            setCurrentPet(getPet);
-        } else {
-            console.log('no pet data found');
-        }
-    };
 
     // increase levels
     const increaseHungry = () => {
@@ -112,25 +89,25 @@ export default function PetSelect() {
     const clearHungryLevel = () => {
         setHungryLevel((val) => val + 20);
         setIsHungry(false);
-        setIncreaseExp((val) => val + 1);
+        setExp((val) => val + 1);
     };
 
     const clearSleepyLevel = () => {
         setSleepyLevel((val) => val + 20);
         setIsSleepy(false);
-        setIncreaseExp((val) => val + 1);
+        setExp((val) => val + 1);
     };
 
     const clearDirtyLevel = () => {
         setDirtyLevel((val) => val + 20);
         setIsDirty(false);
-        setIncreaseExp((val) => val + 1);
+        setExp((val) => val + 1);
     };
 
     const clearLazyLevel = () => {
         setLazyLevel((val) => val + 20);
         setIsLazy(false);
-        setIncreaseExp((val) => val + 1);
+        setExp((val) => val + 1);
     };
 
     // set status
@@ -152,28 +129,71 @@ export default function PetSelect() {
 
     // level up
     const levelUp = () => {
-        setIncreaseLevel((val) => val + 1);
-        setIncreaseExp((val) => val - increaseReqExp);
-        setIncreaseReqExp((val) => val + 10);
+        setLevel((val) => val + 1);
+        setExp((val) => val - reqExp);
+        setReqExp((val) => val + 10);
     };
+
+
+    // pet selection and get pet from local stoarge on switch
+    const selectPet = (index) => {
+
+        const petData = localStorage.getItem(`${data[index - 1].name}`);
+        if (petData) {
+            const getPet = JSON.parse(petData);
+            setCurrentPet(getPet);
+        } else {
+            console.log('no pet data found');
+        }
+    };
+
+
+
+    const save = () => {
+
+        console.log(currentPet.name);
+        const petName = currentPet.name;
+
+        localStorage.setItem(`${petName}`, JSON.stringify({
+            ...currentPet,
+
+            level: level,
+            exp: exp,
+            reqExp: reqExp,
+            hungryLevel: hungryLevel,
+            isHungry: isHungry,
+            sleepyLevel: sleepyLevel,
+            isSleepy: isSleepy,
+            dirtyLevel: dirtyLevel,
+            isDirty: isDirty,
+            lazyLevel: lazyLevel,
+            isLazy: isLazy,
+        }));
+
+    };
+
 
     return (
 
         <Container>
-            <div className="pet-buttons">
-                Pets
-                <button className="pet1" onClick={() => selectPet(1)}>1</button>
-                <button className="pet2" onClick={() => selectPet(2)}>2</button>
-                <button className="pet3" onClick={() => selectPet(3)}>3</button>
+            <br />
+            <div className="pet-buttons text-center">
+                <h3>Select your Pet</h3>
+                <br />
+                <Button variant="outline-primary" size="lg" onClick={() => { selectPet(1); save() }}>1</Button>
+                <Button variant="outline-primary" size="lg" onClick={() => { selectPet(2); save() }}>2</Button>
+                <Button variant="outline-primary" size="lg" onClick={() => { selectPet(3); save() }}>3</Button>
             </div>
+
 
             {currentPet ? <Play
                 currentPet={currentPet}
-                increaseExp={increaseExp}
-                increaseLevel={increaseLevel}
-                increaseReqExp={increaseReqExp}
+                exp={exp}
+                level={level}
+                reqExp={reqExp}
                 levelUp={levelUp}
-                save={save}
+                sprite={sprite}
+                // save={save}
 
                 isHungry={isHungry}
                 hungryLevel={hungryLevel}

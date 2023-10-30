@@ -1,3 +1,4 @@
+import { Image } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
@@ -110,48 +111,31 @@ export default function Play(props) {
         props.levelUp();
     };
 
-    // save
-    const save = () => {
-        // console.log(props);
-        const saveArray = [
-            props.increaseExp,
-            props.increaseLevel,
-            props.increaseReqExp,
-            props.isHungry,
-            props.hungryLevel,
-            props.isSleepy,
-            props.sleepyLevel,
-            props.isDirty,
-            props.dirtyLevel,
-            props.isLazy,
-            props.lazyLevel
-        ]
-        // localStorage.setItem('Pet X', JSON.stringify(saveArray));
-        localStorage.setItem('Pet X', JSON.stringify(props));
-    };
-
-    // setCurrentPet.hungrylevel: props.hungrylevel
 
     return (
         <>
             <section>
-                <br />
-                <h2>Current pet is: {props.currentPet.name} </h2>
-                <br />
-                <h3>Level : {props.increaseLevel}</h3>
-                <br />
-                <Button variant="success" disabled={props.increaseExp >= props.increaseReqExp ? false : true} onClick={() => levelUp()}>Level Up</Button>
-                <br />
-                <br />
-                <h3>Exp: {props.increaseExp} / {props.increaseReqExp}</h3>
-                <br />
+                <div className="text-center">
+                    <br />
+                    <h2>Pets name is: {props.currentPet.name}! </h2>
+                    <Image src={props.sprite} alt="banner" fluid />
+                    <br />
+                    <h3>Level : {props.level}</h3>
+                    <br />
+                    <Button variant="success" disabled={props.exp >= props.reqExp ? false : true} onClick={() => levelUp()}>Level Up</Button>
+                    <br />
+                    <br />
+                    <h3>Exp: {props.exp} / {props.reqExp}</h3>
+                    <br />
+                </div>
 
                 <div className="action-buttons">
                     <div>
-                        is hungry? {props.isHungry ? "yes" : "no"}
+
 
                         {/* disabled={props.isHungry ? false : true} */}
                         <Button disabled={false} className="action feed" onClick={() => feedPet()}>Feed</Button>
+                        {props.isHungry ? "Golly im hungry" : "I just ate"}
 
                         {
                             props.hungryLevel >= 50 ? (
@@ -167,9 +151,9 @@ export default function Play(props) {
                     </div>
                     <br />
                     <div>
-                        is sleepy? {props.isSleepy ? "yes" : "no"}
-                        <Button disabled={props.isSleepy ? false : true} className="action sleep" onClick={() => sleepPet()}>Sleep</Button>
 
+                        <Button disabled={props.isSleepy ? false : true} className="action sleep" onClick={() => sleepPet()}>Sleep</Button>
+                        {props.isSleepy ? "Power nap time?" : "I'm full of beans"}
                         {
                             props.sleepyLevel >= 50 ? (
                                 <ProgressBar animated now={props.sleepyLevel} label={props.sleepyLevel} />
@@ -184,9 +168,9 @@ export default function Play(props) {
                     </div>
                     <br />
                     <div>
-                        is dirty? {props.isDirty ? "yes" : "no"}
-                        <Button disabled={props.isDirty ? false : true} className="action clean" onClick={() => cleanPet()}>Clean</Button>
 
+                        <Button disabled={props.isDirty ? false : true} className="action clean" onClick={() => cleanPet()}>Clean</Button>
+                        {props.isDirty ? "Wouldn't mind a sponge bath" : "Clean as a whistle"}
                         {
                             props.dirtyLevel >= 50 ? (
                                 <ProgressBar animated now={props.dirtyLevel} label={props.dirtyLevel} />
@@ -201,9 +185,9 @@ export default function Play(props) {
                     </div>
                     <br />
                     <div>
-                        needs exercise? {props.isLazy ? "yes" : "no"}
-                        <Button disabled={props.isLazy ? false : true} className="action walk" onClick={() => walkPet()}>Walk</Button>
 
+                        <Button disabled={props.isLazy ? false : true} className="action walk" onClick={() => walkPet()}>Walk</Button>
+                        {props.isLazy ? "Getting a bit chunky over here..." : "You trying to kill me?"}
                         {
                             props.lazyLevel >= 50 ? (
                                 <ProgressBar animated now={props.lazyLevel} label={props.lazyLevel} />
@@ -221,8 +205,8 @@ export default function Play(props) {
                 <br />
 
                 <Stack gap={2} className="col-md-5 mx-auto">
-                    <Button variant="success" onClick={() => save()}>SAVE to database</Button>
-                    <Button variant="outline-secondary">Logout</Button>
+                    {/* <Button variant="success" onClick={() => save()}>SAVE to database</Button> */}
+                    {/* will save to database not local storage, save need to be on pet change */}
                 </Stack>
 
             </section>

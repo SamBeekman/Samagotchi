@@ -38,7 +38,7 @@ export default function Homepage() {
                     </p>
                 </Col>
                 <Col md={6}>
-                    <Image src="/samagotchi1.png" alt="payment form" fluid />
+                    <Image src="/samagotchi1.png" alt="banner" fluid />
                 </Col>
             </Row>
 

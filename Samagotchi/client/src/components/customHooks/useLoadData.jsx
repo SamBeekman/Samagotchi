@@ -1,7 +1,7 @@
 export const petDummyData = [
     {
-        name: "mike",
-        sprite: 1,
+        name: "Tri",
+        sprite: "/sprite1.png",
         level: 1,
         exp: 0,
         reqExp: 10,
@@ -19,8 +19,8 @@ export const petDummyData = [
         isLazy: false,
     },
     {
-        name: "sam",
-        sprite: 1,
+        name: "Tom",
+        sprite: "/sprite2.png",
         level: 1,
         exp: 0,
         reqExp: 10,
@@ -37,8 +37,8 @@ export const petDummyData = [
         lazyThreshold: 80,
         isLazy: false,
     }, {
-        name: "bee",
-        sprite: 1,
+        name: "Sam",
+        sprite: "/sprite4.png",
         level: 1,
         exp: 0,
         reqExp: 10,
