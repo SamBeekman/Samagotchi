@@ -22,7 +22,8 @@ const userSchema = new Schema(
     },
     avatar: {
       type: String,
-      required: false, //--------------------------------------------------------------------how to select avatar?
+      required: true,
+      default: "/user.svg" //--------------------------------------------------------------------how to select avatar?
     },
     friends: [
       {

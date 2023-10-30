@@ -205,7 +205,7 @@ export default function Play(props) {
                 <br />
 
                 <Stack gap={2} className="col-md-5 mx-auto">
-                    {/* <Button variant="success" onClick={() => save()}>SAVE to database</Button> */}
+                    <Button variant="success">SAVE to database</Button>
                     {/* will save to database not local storage, save need to be on pet change */}
                 </Stack>
 

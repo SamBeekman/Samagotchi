@@ -2,31 +2,53 @@ const typeDefs = `
 
 input PetInput {
     _id: ID!
-    sprite: Int!
-    happiness: Int!
-    hungry: Boolean!
-    sleepy: Boolean!
-    poopy: Boolean!
-    fitness: Int!
+    name: String!
+    sprite: String!
+    level: Int!
+    exp: Int!
+    reqExp: Int!
+    hungryLevel: Int!
+    hungryThreshold: Int!
+    isHungry: Boolean!
+    sleepyLevel: Int!
+    sleepyThreshold: Int!
+    isSleepy: Boolean!
+    dirtyLevel: Int!
+    dirtyThreshold: Int!
+    isDirty: Boolean!
+    lazyLevel: Int!
+    lazyThreshold: Int!
+    isLazy: Boolean!
   }
 
 type User {
     _id: ID!
     username: String!
     email: String!
-    avatar: String
+    avatar: String!
     myFriends: [User]
     myPets: [Pet]
 }
 
 type Pet {
     _id: ID!
-    sprite: Int!
-    happiness: Int!
-    hungry: Boolean!
-    sleepy: Boolean!
-    poopy: Boolean!
-    fitness: Int!
+    name: String!
+    sprite: String!
+    level: Int!
+    exp: Int!
+    reqExp: Int!
+    hungryLevel: Int!
+    hungryThreshold: Int!
+    isHungry: Boolean!
+    sleepyLevel: Int!
+    sleepyThreshold: Int!
+    isSleepy: Boolean!
+    dirtyLevel: Int!
+    dirtyThreshold: Int!
+    isDirty: Boolean!
+    lazyLevel: Int!
+    lazyThreshold: Int!
+    isLazy: Boolean!
 }
 
 type Auth {
