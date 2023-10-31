@@ -33,14 +33,14 @@ function NavTabs() {
                         Friends
                     </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                     <Link
                         to="/chat"
                         className={currentPage === '/chat' ? 'nav-link active' : 'nav-link'}
                     >
                         Chat
                     </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <Link
                         to="/play"

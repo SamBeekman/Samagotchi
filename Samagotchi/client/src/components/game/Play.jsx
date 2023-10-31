@@ -10,8 +10,8 @@ export default function Play(props) {
     // timers
     const HUNGRY_TIMER = 100 * 1;
     const SLEEPY_TIMER = 100 * 2;
-    const DIRTY_TIMER = 100 * 3;
-    const LAZY_TIMER = 100 * 4;
+    const DIRTY_TIMER = 100 * 1.5;
+    const LAZY_TIMER = 100 * 2.5;
 
     // hungry level
     useEffect(() => {
@@ -132,9 +132,7 @@ export default function Play(props) {
                 <div className="action-buttons">
                     <div>
 
-
-                        {/* disabled={props.isHungry ? false : true} */}
-                        <Button disabled={false} className="action feed" onClick={() => feedPet()}>Feed</Button>
+                        <Button disabled={props.isHungry ? false : true} className="action feed" onClick={() => feedPet()}>Feed</Button>
                         {props.isHungry ? "Golly im hungry" : "I just ate"}
 
                         {

@@ -87,27 +87,15 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
-        // addPet: async (parent, { petInput }, context) => {
-        //     if (context.user) {
-        //         return User.findOneAndUpdate(
-        //             { _id: context.user._id },
-        //             { $addToSet: { myPets: petInput } },
-        //             {
-        //                 new: true,
-        //                 runValidators: true,
-        //             }
-        //         );
-        //     }
-        //     throw AuthenticationError;
-        // },
 
 
-
-        addPet: async (parent, { sprite }, context) => {
-
+        addPet: async (parent, args, context) => {
             if (context.user) {
-                const newPet = await Pet.create()
-                return User.findOneAndUpdate(
+                const newPet = await Pet.create();
+                await newPet.save();
+
+
+                const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },
                     { $addToSet: { myPets: newPet } },
                     {
@@ -115,8 +103,10 @@ const resolvers = {
                         runValidators: true,
                     }
                 );
+
+                return updatedUser;
             }
-            throw AuthenticationError;
+            throw new AuthenticationError('User not authenticated');
         },
 
 

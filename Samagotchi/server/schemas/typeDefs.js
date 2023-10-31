@@ -32,23 +32,23 @@ type User {
 
 type Pet {
     _id: ID!
-    name: String!
-    sprite: String!
-    level: Int!
-    exp: Int!
-    reqExp: Int!
-    hungryLevel: Int!
-    hungryThreshold: Int!
-    isHungry: Boolean!
-    sleepyLevel: Int!
-    sleepyThreshold: Int!
-    isSleepy: Boolean!
-    dirtyLevel: Int!
-    dirtyThreshold: Int!
-    isDirty: Boolean!
-    lazyLevel: Int!
-    lazyThreshold: Int!
-    isLazy: Boolean!
+    name: String
+    sprite: String
+    level: Int
+    exp: Int
+    reqExp: Int
+    hungryLevel: Int
+    hungryThreshold: Int
+    isHungry: Boolean
+    sleepyLevel: Int
+    sleepyThreshold: Int
+    isSleepy: Boolean
+    dirtyLevel: Int
+    dirtyThreshold: Int
+    isDirty: Boolean
+    lazyLevel: Int
+    lazyThreshold: Int
+    isLazy: Boolean
 }
 
 type Auth {
@@ -66,8 +66,25 @@ type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     addFriend(username: String!): User
     removeFriend(username: String!): User
-    addPet(sprite: Int!): Pet
-    removePet(id: String!): Pet
+    addPet(
+        name: String
+        sprite: String
+        level: Int
+        exp: Int
+        reqExp: Int
+        hungryLevel: Int
+        hungryThreshold: Int
+        isHungry: Boolean
+        sleepyLevel: Int
+        sleepyThreshold: Int
+        isSleepy: Boolean
+        dirtyLevel: Int
+        dirtyThreshold: Int
+        isDirty: Boolean
+        lazyLevel: Int
+        lazyThreshold: Int
+        isLazy: Boolean): Pet
+    removePet(_id: ID!): Pet
     
 }
 `;

@@ -94,15 +94,26 @@ export const REMOVE_FRIEND = gql`
 
 // addPet(petInput: PetInput!): Auth
 export const ADD_PET = gql`
-    mutation addPet($sprite: Int!) {
-        addPet(sprite: $sprite) {
+    mutation addPet{
+        addPet{
             _id
+            name
             sprite
-            happiness
-            hungry
-            sleepy
-            poopy
-            fitness
+            level
+            exp
+            reqExp
+            hungryLevel
+            hungryThreshold
+            isHungry            
+            sleepyLevel
+            sleepyThreshold
+            isSleepy
+            dirtyLevel
+            dirtyThreshold
+            isDirty
+            lazyLevel
+            lazyThreshold
+            isLazy
         }
     }
 `;
@@ -112,12 +123,23 @@ export const REMOVE_PET = gql`
     mutation removePet($_id: ID!) {
         removePet(_id: $_id) {
             _id
+            name
             sprite
-            happiness
-            hungry
-            sleepy
-            poopy
-            fitness
+            level
+            exp
+            reqExp
+            hungryLevel
+            hungryThreshold
+            isHungry            
+            sleepyLevel
+            sleepyThreshold
+            isSleepy
+            dirtyLevel
+            dirtyThreshold
+            isDirty
+            lazyLevel
+            lazyThreshold
+            isLazy
         }
     }
 `;

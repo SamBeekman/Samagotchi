@@ -20,18 +20,45 @@ export const GET_ME = gql`
                     avatar
                 }
                 myPets {                    
-                    sprite
-                    happiness
+                    _id
+                name
+                sprite
+                level
+                exp
+                reqExp
+                hungryLevel
+                hungryThreshold
+                isHungry
+                sleepyLevel
+                sleepyThreshold
+                isSleepy
+                dirtyLevel
+                dirtyThreshold
+                isDirty
+                lazyLevel
+                lazyThreshold
+                isLazy
                 }
             }
             myPets {
                 _id
+                name
                 sprite
-                happiness
-                hungry
-                sleepy
-                poopy
-                fitness
+                level
+                exp
+                reqExp
+                hungryLevel
+                hungryThreshold
+                isHungry
+                sleepyLevel
+                sleepyThreshold
+                isSleepy
+                dirtyLevel
+                dirtyThreshold
+                isDirty
+                lazyLevel
+                lazyThreshold
+                isLazy
             }
         }
     }

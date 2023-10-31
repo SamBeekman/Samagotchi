@@ -23,13 +23,13 @@ const userSchema = new Schema(
     avatar: {
       type: String,
       required: true,
-      default: "/user.svg" //--------------------------------------------------------------------how to select avatar?
+      default: "/user.svg",
     },
     friends: [
       {
         type: Schema.Types.ObjectId,
         ref: 'User',
-      }, //-------------------------------------------------------------------may need to make a virtual for getting friend data?
+      },
     ],
     myPets: {
       type: Schema.Types.ObjectId,
