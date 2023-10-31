@@ -6,7 +6,7 @@ import { Container, Button } from 'react-bootstrap';
 export default function PetSelect() {
 
     const [data, setData] = useState(petDummyData);
-    const [currentPet, setCurrentPet] = useState(data[0]); // will eventually come from local storage then from database
+    const [currentPet, setCurrentPet] = useState(data[0]);
 
     const [exp, setExp] = useState(currentPet.exp);
     const [level, setLevel] = useState(currentPet.level);
@@ -193,7 +193,6 @@ export default function PetSelect() {
                 reqExp={reqExp}
                 levelUp={levelUp}
                 sprite={sprite}
-                // save={save}
 
                 isHungry={isHungry}
                 hungryLevel={hungryLevel}

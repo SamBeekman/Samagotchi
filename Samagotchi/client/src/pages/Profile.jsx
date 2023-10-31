@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { ADD_PET } from '../utils/mutations';
@@ -47,7 +46,6 @@ const Profile = () => {
                 </Col>
                 <Col md={3}>
                 </Col>
-
             </Row>
 
             <Container>
@@ -122,10 +120,7 @@ const Profile = () => {
                         <Button variant='danger'>Delete Pet</Button>
                     </Col>
                 </Row>
-
-
             </Container>
-
         </Container >
     );
 };

@@ -25,9 +25,6 @@ export default function Homepage() {
                             <Carousel.Item>
                                 <img src="/sprite0.png" alt="First slide" className="d-block w-100" />
                             </Carousel.Item>
-                            {/* <Carousel.Item>
-                                <img src="/sprite1.png" alt="Second slide" className="d-block w-100" />
-                            </Carousel.Item> */}
                             <Carousel.Item>
                                 <img src="/sprite3.png" alt="Third slide" className="d-block w-100" />
                             </Carousel.Item>

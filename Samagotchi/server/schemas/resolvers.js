@@ -13,6 +13,7 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+
         searchUsers: async (parent, { username }) => {
             if (username) {
                 const user = await User.findOne({ username: username });
@@ -43,12 +44,14 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
+
         addUser: async (parent, { username, email, password }) => {
             const user = await User.create({ username, email, password });
 
             const token = signToken(user);
             return { token, user };
         },
+
         addFriend: async (parent, { username }, context) => {
             if (context.user) {
                 const friendToAdd = await User.findOne({ username: username });
@@ -68,6 +71,7 @@ const resolvers = {
             }
             throw AuthenticationError;
         },
+
         removeFriend: async (parent, { username }, context) => {
             if (context.user) {
                 const friendToRemove = await User.findOne({ username: username });
@@ -88,7 +92,6 @@ const resolvers = {
             throw AuthenticationError;
         },
 
-
         addPet: async (parent, args, context) => {
             if (context.user) {
                 const newPet = await Pet.create();
@@ -108,12 +111,6 @@ const resolvers = {
             }
             throw new AuthenticationError('User not authenticated');
         },
-
-
-
-
-
-
 
         removePet: async (parent, { _id }, context) => {
             if (context.user) {

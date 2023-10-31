@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
-import { Form, Button, Alert } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
+import { Form, Button, Alert, Container } from 'react-bootstrap';
+import Auth from '../utils/auth';
+
 
 const SignupForm = () => {
     // set initial form state
@@ -13,10 +13,7 @@ const SignupForm = () => {
     // set state for alert
     const [showAlert, setShowAlert] = useState(false);
 
-
     const [addUser, { error, data }] = useMutation(ADD_USER);
-
-
 
 
     const handleInputChange = (event) => {
@@ -27,7 +24,6 @@ const SignupForm = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        // check if form has everything (as per react-bootstrap docs)
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -58,9 +54,7 @@ const SignupForm = () => {
     return (
         <>
             <Container fluid>
-                {/* This is needed for the validation functionality above */}
                 <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-                    {/* show alert if server response is bad */}
                     <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
                         Something went wrong with your signup!
                     </Alert>

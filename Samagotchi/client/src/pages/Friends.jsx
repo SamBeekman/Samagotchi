@@ -20,27 +20,9 @@ const Friends = () => {
     };
 
 
-
-    // const handleRemoveFriendButton = async (event) => {
-
-    //     try {
-
-    //         const { data } = await addPet();
-    //         console.log(data);
-
-    //         // window.location.reload();
-    //     } catch (err) {
-    //         console.error(err);
-    //     }
-    // };
-
-
-
     return (
-
         <Container>
             <br /><br />
-
             <Row className="justify-content-center">
                 <MDBCol >
                     <div className="active-pink-3 active-pink-4 mb-4">
@@ -49,9 +31,7 @@ const Friends = () => {
                 </MDBCol>
             </Row>
             <br />
-
             <h4>My Friends</h4>
-
             <br />
             <Row>
                 <Col md={3}>
@@ -118,7 +98,6 @@ const Friends = () => {
                     <Button onClick={handleChatButton} variant='primary'>Chat with friend</Button>
                 </Col>
             </Row>
-
         </Container >
     );
 };

@@ -4,7 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Stack from 'react-bootstrap/Stack';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
-
 export default function Play(props) {
 
     // timers
@@ -109,6 +108,11 @@ export default function Play(props) {
     // level up
     const levelUp = () => {
         props.levelUp();
+    };
+
+    // redirect
+    const handleSaveButton = () => {
+        window.location.href = '/logout';
     };
 
 
@@ -218,8 +222,7 @@ export default function Play(props) {
                 <br />
 
                 <Stack gap={2} className="col-md-5 mx-auto">
-                    <Button variant="success">SAVE to database</Button>
-                    {/* will save to database not local storage, save need to be on pet change */}
+                    <Button variant="success" onClick={handleSaveButton}>SAVE All Progress</Button>
                 </Stack>
 
             </section>

@@ -2,10 +2,8 @@ import { useState } from 'react';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-import { Form, Button, Alert } from 'react-bootstrap';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import { Form, Button, Alert, Row, Container } from 'react-bootstrap';
+
 
 
 
@@ -24,7 +22,6 @@ const LoginForm = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
 
-        // check if form has everything (as per react-bootstrap docs)
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
