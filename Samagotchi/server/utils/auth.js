@@ -1,8 +1,10 @@
 const { GraphQLError } = require('graphql');
 const jwt = require('jsonwebtoken');
 
+
 // set token secret and expiration date
-const secret = 'mysecretsshhhhh'; //-----------------------------------------------------------------------------hide this in .env
+const secret = process.env.REACT_APP_JWT_SECRET;
+
 const expiration = '2h';
 
 module.exports = {
