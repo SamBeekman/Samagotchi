@@ -133,7 +133,10 @@ export default function Play(props) {
                     <div>
 
                         <Button disabled={props.isHungry ? false : true} className="action feed" onClick={() => feedPet()}>Feed</Button>
-                        {props.isHungry ? "Golly im hungry" : "I just ate"}
+                        <span style={{ marginLeft: '10px' }}>
+                            {props.isHungry ? "Golly im hungry" : "I just ate"}
+                        </span>
+                        <br /><br />
 
                         {
                             props.hungryLevel >= 50 ? (
@@ -151,7 +154,11 @@ export default function Play(props) {
                     <div>
 
                         <Button disabled={props.isSleepy ? false : true} className="action sleep" onClick={() => sleepPet()}>Sleep</Button>
-                        {props.isSleepy ? "Power nap time?" : "I'm full of beans"}
+                        <span style={{ marginLeft: '10px' }}>
+                            {props.isSleepy ? "Power nap time?" : "I'm full of beans"}
+                        </span>
+                        <br /><br />
+
                         {
                             props.sleepyLevel >= 50 ? (
                                 <ProgressBar animated now={props.sleepyLevel} label={props.sleepyLevel} />
@@ -168,7 +175,11 @@ export default function Play(props) {
                     <div>
 
                         <Button disabled={props.isDirty ? false : true} className="action clean" onClick={() => cleanPet()}>Clean</Button>
-                        {props.isDirty ? "Wouldn't mind a sponge bath" : "Clean as a whistle"}
+                        <span style={{ marginLeft: '10px' }}>
+                            {props.isDirty ? "Wouldn't mind a sponge bath..." : "Clean as a whistle"}
+                        </span>
+                        <br /><br />
+
                         {
                             props.dirtyLevel >= 50 ? (
                                 <ProgressBar animated now={props.dirtyLevel} label={props.dirtyLevel} />
@@ -185,7 +196,11 @@ export default function Play(props) {
                     <div>
 
                         <Button disabled={props.isLazy ? false : true} className="action walk" onClick={() => walkPet()}>Walk</Button>
-                        {props.isLazy ? "Getting a bit chunky over here..." : "You trying to kill me?"}
+                        <span style={{ marginLeft: '10px' }}>
+                            {props.isLazy ? "Getting a bit chunky over here..." : "You trying to kill me?"}
+                        </span>
+                        <br /><br />
+
                         {
                             props.lazyLevel >= 50 ? (
                                 <ProgressBar animated now={props.lazyLevel} label={props.lazyLevel} />

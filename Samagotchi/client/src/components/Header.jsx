@@ -2,9 +2,9 @@ import Image from 'react-bootstrap/Image';
 
 function Header() {
     return (
-
-        <Image src="/logo.jpg" alt="payment form" fluid />
-
+        <div className="d-flex justify-content-center align-items-center">
+            <Image src="/logo.jpg" alt="payment form" fluid />
+        </div>
     );
 }
 
