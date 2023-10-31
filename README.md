@@ -21,7 +21,7 @@ Samagotchi is a virtual pet game that blends nostalgia with modernity, allowing 
 - **Virtual Pet Nurturing:** Care for your virtual pet by feeding, playing, and cleaning.
 - **Responsibility and Friendship:** Instill values of responsibility, empathy, and friendship in a playful and engaging manner.
 - **Multi-Platform Support:** Play on various platforms, including web and mobile devices.
-- **Customization:** Customize your pet's appearance and environment to create a unique virtual world.
+- **Community:** Connect with other Samagotchi users and chat in our chat rooms.
 
 ## Installation
 
