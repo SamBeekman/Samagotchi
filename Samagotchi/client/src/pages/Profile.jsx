@@ -21,7 +21,6 @@ const Profile = () => {
             const { data } = await addPet();
             console.log(data);
 
-            // window.location.reload();
         } catch (err) {
             console.error(err);
         }
@@ -35,7 +34,6 @@ const Profile = () => {
             <Row className="mb-3">
                 <Col md={3}>
                     <Image src="/avatar2.png" alt="avatar" fluid />
-                    {/* <Image src={me.avatar} alt="avatar" fluid /> */}
                 </Col>
                 <Col md={6}>
                     <br />
@@ -133,24 +131,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-
-
-
-// export default function Profile() {
-//     return (
-//         <div>
-
-//             <h1>Profile Page</h1>
-//             me={me}
-
-
-//             <div>
-//                 <div>Play</div>
-//                 <div>User Avatar</div>
-//                 <div>User Pets</div>
-//             </div>
-
-//         </div>
-//     );
-// }
