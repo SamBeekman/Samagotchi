@@ -13,7 +13,8 @@ Samagotchi is a virtual pet game that blends nostalgia with modernity, allowing 
 
 ## Demo
 
-![Demo](demo.gif)
+![Samagotchi Screenshot](https://github.com/SamBeekman/Samagotchi/assets/131665093/12ac166e-318e-4657-a65a-b85190b2cd46)
+
 
 ## Features
 
